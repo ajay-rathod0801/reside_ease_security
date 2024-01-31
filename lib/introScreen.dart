@@ -7,10 +7,8 @@ class IntroductoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 360,
-      height: 800,
       color: Colors.white,
-      padding: const EdgeInsets.only(top: 232, bottom: 80),
+      padding: const EdgeInsets.only(top: 232, bottom: 250),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -22,7 +20,7 @@ class IntroductoryScreen extends StatelessWidget {
               fit: BoxFit.contain,
             ),
           ),
-          const SizedBox(height: 116),
+          const SizedBox(height: 10),
           GestureDetector(
             onTap: () {
               Navigator.push(
