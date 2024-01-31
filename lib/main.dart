@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'introScreen.dart'; // Import your IntroductoryScreen file
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key}); // Fix the constructor
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+<<<<<<< Updated upstream
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -121,6 +122,10 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+=======
+    return const MaterialApp(
+      home: IntroductoryScreen(), // Set IntroductoryScreen as the home screen
+>>>>>>> Stashed changes
     );
   }
 }
