@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:reside_ease_security/introductory_screen.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Login Screen',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: const Color.fromRGBO(249, 249, 255, 1),
+      ),
+      home: const IntroductoryScreen(),
+    );
   }
 }
