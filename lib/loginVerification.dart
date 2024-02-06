@@ -1,7 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:reside_ease_security/loginDetails.dart';
-class LoginVarification extends StatelessWidget {
-  const LoginVarification({super.key});
+
+class LoginVerification extends StatefulWidget {
+  final String phoneNumber;
+
+  const LoginVerification({Key? key, required this.phoneNumber}) : super(key: key);
+
+  @override
+  _LoginVerificationState createState() => _LoginVerificationState();
+}
+
+class _LoginVerificationState extends State<LoginVerification> {
+  late List<String> _otpDigits;
+  final TextEditingController _otpController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize _otpDigits with empty strings
+    _otpDigits = List.filled(6, '');
+  }
+
+  @override
+  void dispose() {
+    _otpController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +63,7 @@ class LoginVarification extends StatelessWidget {
                           ),
                         ),
                         TextSpan(
-                          text: '+91 75132 00000',
+                          text: '+91 9428281947', // Use the passed phone number
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 14,
@@ -54,31 +78,42 @@ class LoginVarification extends StatelessWidget {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  for (var digit in ['6', '0', '9', '1', '4', '4'])
-                    Container(
-                      height: 44,
-                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                      decoration: BoxDecoration(
-                        border: Border.all(),
-                      ),
-                      child: Text(
-                        digit,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.w400,
-                        ),
+                children: List.generate(6, (index) {
+                  return Container(
+                    height: 44,
+                    width: 44,
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    decoration: BoxDecoration(
+                      border: Border.all(),
+                    ),
+                    alignment: Alignment.center,
+                    child: TextField(
+                      controller: TextEditingController(text: _otpDigits[index]),
+                      onChanged: (value) {
+                        setState(() {
+                          _otpDigits[index] = value;
+                        });
+                        if (index < 5 && value.isNotEmpty) {
+                          FocusScope.of(context).nextFocus();
+                        }
+                      },
+                      textAlign: TextAlign.center,
+                      keyboardType: TextInputType.number,
+                      maxLength: 1,
+                      style: const TextStyle(fontSize: 16),
+                      decoration: InputDecoration(
+                        counterText: '',
+                        border: InputBorder.none,
                       ),
                     ),
-                ],
+                  );
+                }),
               ),
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(1),
                 decoration: ShapeDecoration(
                   color: Colors.white,
-
                   shape: RoundedRectangleBorder(
                     side: const BorderSide(width: 1, color: Color(0xFF1E1E1E)),
                     borderRadius: BorderRadius.circular(6),
@@ -86,11 +121,24 @@ class LoginVarification extends StatelessWidget {
                 ),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const LoginDetails()),
-                    );
-                    // Submit action
+                    // Validate OTP
+                    String otp = _otpDigits.join();
+                    if (otp == "609144") { // Assuming OTP is "609144"
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginDetails(),
+                        ),
+                      );
+                    } else {
+                      // Show error, clear OTP input
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Invalid OTP')),
+                      );
+                      setState(() {
+                        _otpDigits = List.filled(6, '');
+                      });
+                    }
                   },
                   child: const Text(
                     'Submit',
