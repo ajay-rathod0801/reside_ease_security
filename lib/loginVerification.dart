@@ -91,8 +91,7 @@ class OtpScreenState extends State<OtpScreen> {
                   inactiveFillColor: Colors.white,
                   selectedFillColor: Colors.yellow.shade200,
                   activeColor: Colors.black, // color when the field is active
-                  // selectedColor:
-                  //     Colors.black, // color when the field is selected
+                  selectedColor: Colors.amber,
                   inactiveColor: Colors.black,
                 ),
                 animationDuration: Duration(milliseconds: 300),
@@ -103,7 +102,7 @@ class OtpScreenState extends State<OtpScreen> {
                 onChanged: (value) {
                   print(value);
                   setState(
-                        () {
+                    () {
                       _otpController.text = value;
                     },
                   );

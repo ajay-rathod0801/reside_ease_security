@@ -19,7 +19,7 @@ class IntroductoryScreenState extends State<IntroductoryScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/introPageLogo.jpg',
+              'assets/logo.png',
               height: 600,
               width: double.infinity,
             ),
@@ -58,8 +58,6 @@ class IntroductoryScreenState extends State<IntroductoryScreen> {
                   color: Colors.amberAccent,
                   width: 1,
                 ),
-                shadowColor: isButtonClicked ? Colors.blue.shade900 : null,
-                elevation: isButtonClicked ? 10 : 0,
               ),
             ),
           ],

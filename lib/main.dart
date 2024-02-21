@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'introScreen.dart'; // Import your IntroductoryScreen file
 
 void main() {
@@ -10,8 +11,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: IntroductoryScreen(), // Set IntroductoryScreen as the home screen
+    return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.yellow,
+      ),
+      home: IntroductoryScreen(),
     );
   }
 }
