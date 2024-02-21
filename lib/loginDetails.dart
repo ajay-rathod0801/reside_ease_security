@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:reside_ease_security/bottom_navigation.dart';
 class LoginDetails extends StatelessWidget {
   const LoginDetails({super.key});
 
@@ -29,7 +29,12 @@ class LoginDetails extends StatelessWidget {
             const SizedBox(height: 50),
             ElevatedButton(
               onPressed: () {
-                // Handle continue button press
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                    builder: (context) => ParentWidget(),
+                    ),
+                );// Handle continue button press
               },
               child: const Text('Continue'),
             ),

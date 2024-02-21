@@ -1,49 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-
-import 'package:reside_ease_security/ten_digit_code_screen.dart';
-
-class OtpScreen extends StatefulWidget {
-  final String phoneNumber;
-
-  const OtpScreen({
-    super.key,
-    required this.phoneNumber,
-  });
+import 'package:reside_ease_security/bottom_navigation.dart';
+class TenDigitCodeScreen extends StatefulWidget {
+  const TenDigitCodeScreen({super.key});
 
   @override
   State<StatefulWidget> createState() {
-    return OtpScreenState();
+    return TenDigitCodeScreenState();
   }
 }
 
-class OtpScreenState extends State<OtpScreen> {
+class TenDigitCodeScreenState extends State<TenDigitCodeScreen> {
   // create a form key
   final _formKey = GlobalKey<FormState>();
 
   // create a text editing controller
-  final _otpController = TextEditingController();
+  final _tenDigitController = TextEditingController();
 
   // create a focus node
-  final _otpFocusNode = FocusNode();
+  final _tenDigitFocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
 
-    _otpFocusNode.addListener(() {
-      if (_otpFocusNode.hasFocus) {
-        _otpController.clear();
+    _tenDigitFocusNode.addListener(() {
+      if (_tenDigitFocusNode.hasFocus) {
+        _tenDigitController.clear();
       }
     });
   }
 
   @override
   void dispose() {
-    _otpController.dispose();
+    _tenDigitController.dispose();
 
     // dispose the focus nodes
-    _otpFocusNode.dispose();
+    _tenDigitFocusNode.dispose();
 
     super.dispose();
   }
@@ -62,7 +55,7 @@ class OtpScreenState extends State<OtpScreen> {
                 height: 180,
               ),
               const Text(
-                'Confirm your number',
+                'Enter Code',
                 style: TextStyle(
                   fontSize: 32.0,
                   fontWeight: FontWeight.bold,
@@ -71,23 +64,23 @@ class OtpScreenState extends State<OtpScreen> {
               const SizedBox(
                 height: 16.0,
               ),
-              Text(
-                'Enter the code sent to ${widget.phoneNumber}',
+              const Text(
+                'Enter the security code shared by the administrator',
               ),
               const SizedBox(
                 height: 50.0,
               ),
               PinCodeTextField(
                 appContext: context,
-                length: 6,
+                length: 10,
                 obscureText: false,
                 keyboardType: TextInputType.number,
                 pinTheme: PinTheme(
                   shape: PinCodeFieldShape.box,
                   borderRadius: BorderRadius.circular(5),
                   borderWidth: 1,
-                  fieldHeight: 50,
-                  fieldWidth: 50,
+                  fieldHeight: 35,
+                  fieldWidth: 35,
                   activeFillColor: Colors.white,
                   inactiveFillColor: Colors.white,
                   selectedFillColor: Colors.blue.shade200,
@@ -96,7 +89,7 @@ class OtpScreenState extends State<OtpScreen> {
                   //     Colors.black, // color when the field is selected
                   inactiveColor: Colors.black,
                 ),
-                animationDuration: Duration(milliseconds: 300),
+                animationDuration: const Duration(milliseconds: 300),
                 enableActiveFill: true,
                 onCompleted: (v) {
                   print("Completed");
@@ -105,7 +98,7 @@ class OtpScreenState extends State<OtpScreen> {
                   print(value);
                   setState(
                         () {
-                      _otpController.text = value;
+                      _tenDigitController.text = value;
                     },
                   );
                 },
@@ -116,15 +109,12 @@ class OtpScreenState extends State<OtpScreen> {
               const SizedBox(),
               OutlinedButton(
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    // navigate to the home screen
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const TenDigitCodeScreen(),
-                      ),
-                    );
-                  }
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ParentWidget(),
+                    ),
+                  );
                 },
                 style: OutlinedButton.styleFrom(
                   shape: RoundedRectangleBorder(
