@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:reside_ease_security/bottom_navigation.dart';
-class LoginDetails extends StatelessWidget {
+
+class LoginDetails extends StatefulWidget {
   const LoginDetails({super.key});
+
+  @override
+  LoginDetailsState createState() => LoginDetailsState();
+}
+
+class LoginDetailsState extends State<LoginDetails> {
+  bool isButtonClicked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -22,21 +30,62 @@ class LoginDetails extends StatelessWidget {
                 fontWeight: FontWeight.w400,
               ),
             ),
-            const SizedBox(height: 30),
-            _buildNameField('Enter First Name', 'Amit'),
-            const SizedBox(height: 20),
-            _buildNameField('Enter Last Name', 'Choudhary'),
-            const SizedBox(height: 50),
-            ElevatedButton(
+            const SizedBox(
+              height: 20,
+            ),
+            TextFormField(
+              decoration: InputDecoration(
+                labelText: 'First Name',
+                filled: true,
+                fillColor: Colors.yellow.shade200,
+              ),
+              cursorColor: Colors.black,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            TextFormField(
+              decoration: InputDecoration(
+                labelText: 'Last Name',
+                filled: true,
+                fillColor: Colors.yellow.shade200,
+              ),
+              cursorColor: Colors.black,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton.icon(
+              icon: const Icon(
+                Icons.arrow_forward,
+                size: 20,
+                color: Colors.amberAccent,
+              ),
+              label: const Text(
+                'Continue',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                ),
+              ),
               onPressed: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                    builder: (context) => ParentWidget(),
-                    ),
-                );// Handle continue button press
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ParentWidget(),
+                  ),
+                );
               },
-              child: const Text('Continue'),
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                side: const BorderSide(
+                  color: Colors.amberAccent,
+                  width: 1,
+                ),
+                elevation: 10,
+              ),
             ),
           ],
         ),
@@ -58,26 +107,26 @@ class LoginDetails extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 4),
-        Container(
-          height: 36,
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          decoration: BoxDecoration(
-            color: const Color(0xFFFFEDAD),
-            borderRadius: BorderRadius.circular(6),
-            border: Border.all(width: 1, color: const Color(0xB21E1E1E)),
-          ),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              initialValue,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 16,
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.w400,
+        TextField(
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: const Color(0xFFFFEDAD),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(6),
+              borderSide: const BorderSide(
+                width: 1,
+                color: Color(0xB21E1E1E),
               ),
             ),
           ),
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 16,
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.w400,
+          ),
+          controller: TextEditingController(text: initialValue),
         ),
       ],
     );
