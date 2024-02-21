@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reside_ease_security/homeScreen.dart';
-import 'package:reside_ease_security/community_page.dart';
+import 'package:reside_ease_security/inout_page.dart';
 import 'package:reside_ease_security/profile_page.dart';
 
 class ParentWidget extends StatefulWidget {
@@ -14,7 +14,7 @@ class ParentWidgetState extends State<ParentWidget> {
   int currentPageIndex = 0;
   final List<Widget> pages = [
     HomeScreen(),
-    CommunityPage(),
+    InOutPage(),
     ProfilePage(),
   ];
 
@@ -70,7 +70,7 @@ class BottomNavigation extends StatelessWidget {
         NavigationDestination(
           selectedIcon: Icon(Icons.flaky),
           icon: Badge(child: Icon(Icons.flaky_outlined)),
-          label: 'Community',
+          label: 'In-Out',
         ),
         NavigationDestination(
           selectedIcon: Icon(Icons.person_2_outlined),

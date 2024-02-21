@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-
-import 'package:reside_ease_security/ten_digit_code_screen.dart';
+import 'package:reside_ease_security/loginDetails.dart';
 
 class OtpScreen extends StatefulWidget {
   final String phoneNumber;
@@ -90,7 +89,7 @@ class OtpScreenState extends State<OtpScreen> {
                   fieldWidth: 50,
                   activeFillColor: Colors.white,
                   inactiveFillColor: Colors.white,
-                  selectedFillColor: Colors.blue.shade200,
+                  selectedFillColor: Colors.yellow.shade200,
                   activeColor: Colors.black, // color when the field is active
                   // selectedColor:
                   //     Colors.black, // color when the field is selected
@@ -121,7 +120,7 @@ class OtpScreenState extends State<OtpScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const TenDigitCodeScreen(),
+                        builder: (context) => const LoginDetails(),
                       ),
                     );
                   }

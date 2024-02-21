@@ -98,7 +98,7 @@ class LoginScreenState extends State<LoginScreen> {
                       decoration: InputDecoration(
                         labelText: 'Enter Phone Number or Email ID',
                         filled: true,
-                        fillColor: Colors.amberAccent.shade100,
+                        fillColor: Colors.yellow.shade200,
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
