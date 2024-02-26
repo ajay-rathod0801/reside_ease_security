@@ -63,8 +63,8 @@ class BottomNavigation extends StatelessWidget {
     return NavigationBar(
       destinations: const <Widget>[
         NavigationDestination(
-          selectedIcon: Icon(Icons.home_outlined),
-          icon: Icon(Icons.home),
+          selectedIcon: Icon(Icons.home),
+          icon: Icon(Icons.home_outlined),
           label: 'Home',
         ),
         NavigationDestination(
@@ -73,8 +73,8 @@ class BottomNavigation extends StatelessWidget {
           label: 'In-Out',
         ),
         NavigationDestination(
-          selectedIcon: Icon(Icons.person_2_outlined),
-          icon: Icon(Icons.person_2),
+          selectedIcon: Icon(Icons.person_2),
+          icon: Icon(Icons.person_2_outlined),
           label: 'Profile',
         ),
       ],

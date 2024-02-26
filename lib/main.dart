@@ -7,15 +7,15 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key}); // Fix the constructor
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.yellow,
+        colorSchemeSeed: Colors.yellow,
       ),
-      home: ParentWidget(),
+      home: IntroductoryScreen(),
     );
   }
 }

@@ -5,7 +5,6 @@ class InOutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    throw UnimplementedError();
+    return Scaffold();
   }
 }
