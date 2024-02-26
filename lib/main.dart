@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'bottom_navigation.dart';
 import 'introScreen.dart'; // Import your IntroductoryScreen file
 
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.yellow,
       ),
-      home: IntroductoryScreen(),
+      home: ParentWidget(),
     );
   }
 }

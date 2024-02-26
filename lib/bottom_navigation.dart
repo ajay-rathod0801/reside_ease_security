@@ -13,7 +13,7 @@ class ParentWidget extends StatefulWidget {
 class ParentWidgetState extends State<ParentWidget> {
   int currentPageIndex = 0;
   final List<Widget> pages = [
-    HomeScreen(),
+    HomePage(),
     InOutPage(),
     ProfilePage(),
   ];
