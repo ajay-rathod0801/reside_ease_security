@@ -20,63 +20,64 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          color: Color(0xFFF9F9FF),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Align(
-                alignment: Alignment.center,
-                child: Padding(
-                  padding: EdgeInsets.only(top: 50),
-                  child: _buildAddressContainer(),
-                ),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: _buildTitle('ADD NEW VISITOR', 22),
-                ),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: Padding(
-                  padding: EdgeInsets.only(top: 20, bottom: 20),
-                  child: _buildGuestList(),
-                ),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: _buildTitle('Enter 6 digit code in QR', 22),
-                ),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: Expanded(
+        child: SingleChildScrollView(
+          child: Container(
+            color: Color(0xFFF9F9FF),
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Align(
+                  alignment: Alignment.center,
                   child: Padding(
-                    padding: EdgeInsets.only(left: 30, right: 30, top: 30),
+                    padding: EdgeInsets.only(top: 50),
+                    child: _buildAddressContainer(),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 20),
+                    child: _buildTitle('ADD NEW VISITOR', 22),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 20, bottom: 20),
+                    child: _buildGuestList(),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 20),
+                    child: _buildTitle('Enter 6 digit code in QR', 22),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 30),
                     child: _buildInputSection(),
                   ),
                 ),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: Padding(
-                  padding: EdgeInsets.only(top: 5),
-                  child: _buildContinueButton(),
+                Align(
+                  alignment: Alignment.center,
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 5),
+                    child: _buildContinueButton(),
+                  ),
                 ),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: Padding(
-                  padding: EdgeInsets.only(top: 30),
-                  child: _buildQRButton(),
+                Align(
+                  alignment: Alignment.center,
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 30, bottom: 50),
+                    child: _buildQRButton(),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -214,58 +215,75 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _buildContinueButton() {
-    return Container(
-      width: 118,
-      height: 40,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(
-          color: Colors.black,
-          width: 2,
-        ),
-        color: Colors.white,
-      ),
-      child: Center(
-        child: Text(
-          'Continue',
-          style: TextStyle(
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.white,
+        onPrimary: Colors.black,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+          side: BorderSide(
             color: Colors.black,
-            fontWeight: FontWeight.bold,
+            width: 2,
+          ),
+        ),
+      ),
+      onPressed: () {
+        // Add your onPressed logic here
+      },
+      child: Container(
+        width: 118,
+        height: 40,
+        child: Center(
+          child: Text(
+            'Continue',
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
     );
   }
+
   Widget _buildQRButton() {
-    return Container(
-      width: 326,
-      height: 132,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(
-          color: Colors.black,
-          width: 2,
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.black,
+        onPrimary: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+          side: BorderSide(
+            color: Colors.black,
+            width: 2,
+          ),
         ),
-        color: Colors.black,
       ),
-      child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.qr_code,
-              color: Colors.white,
-              size: 100,
-            ),
-            SizedBox(width: 26), // Adjust the spacing between icon and text
-            Text(
-              'Scan QR instead?',
-              style: TextStyle(
+      onPressed: () {
+        // Add your onPressed logic here
+      },
+      child: Container(
+        width: double.infinity,
+        height: 132,
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.qr_code,
                 color: Colors.white,
-                fontWeight: FontWeight.bold,
+                size: 100,
               ),
-            ),
-          ],
+              SizedBox(width: 26), // Adjust the spacing between icon and text
+              Text(
+                'Scan QR instead?',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
