@@ -21,9 +21,8 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Container(
-            color: Color(0xFFF9F9FF),
-            padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -52,7 +51,7 @@ class HomePage extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Padding(
                     padding: EdgeInsets.only(top: 20),
-                    child: _buildTitle('Enter 6 digit code in QR', 22),
+                    child: _buildTitle('Enter 6 digit code in QR', 20),
                   ),
                 ),
                 Align(
@@ -111,7 +110,7 @@ class HomePage extends StatelessWidget {
       style: TextStyle(
         fontFamily: 'Roboto',
         fontStyle: FontStyle.normal,
-        fontWeight: FontWeight.w400,
+        fontWeight: FontWeight.w600,
         fontSize: fontSize,
         color: Color(0xFF000000),
       ),

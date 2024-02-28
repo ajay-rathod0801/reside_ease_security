@@ -99,9 +99,8 @@ class LoginScreenState extends State<LoginScreen> {
                       decoration: InputDecoration(
                         labelText: 'Enter Phone Number',
                         filled: true,
-                        fillColor: Colors.yellow.shade200,
+                        fillColor: Color.fromRGBO(255, 237, 173, 1),
                       ),
-                      cursorColor: Colors.black,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter a phone number!';

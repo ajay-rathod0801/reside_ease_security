@@ -5,6 +5,17 @@ class InOutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Center(
+        child: Text(
+          'Uh oh! No visitors yet!',
+          style: TextStyle(
+            fontSize: 24,
+            fontStyle: FontStyle.italic,
+            color: Colors.grey.shade700,
+          ),
+        ),
+      ),
+    );
   }
 }
