@@ -1,20 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:pin_code_fields/pin_code_fields.dart';
 class HomePage extends StatelessWidget {
   final TextEditingController _textController = TextEditingController();
 
-  // void _updateTextField(String text) {
-  //   if (_textController.text.length < 6) {
-  //     _textController.text += text;
-  //   }
-  // }
-
-  // void _removeLastCharacter() {
-  //   String currentText = _textController.text;
-  //   if (currentText.isNotEmpty) {
-  //     _textController.text = currentText.substring(0, currentText.length - 1);
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +46,7 @@ class HomePage extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Padding(
                     padding: EdgeInsets.only(top: 30),
-                    child: _buildInputSection(),
+                    child: _buildInputSection(context),
                   ),
                 ),
                 Align(
@@ -181,36 +169,43 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildInputSection() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        TextField(
-          maxLength: 6,
-          controller: _textController,
-          textAlign: TextAlign.center,
-          keyboardType: TextInputType.number,
-          decoration: InputDecoration(
-            counterText: "",
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide.none,
-            ),
-            filled: true,
-            fillColor: Color(0xFFFFEDAD),
+  Widget _buildInputSection(BuildContext context) {
+    return Container(
+          child: Column(
+            children: [
+              PinCodeTextField(
+                appContext: context,
+                length: 6,
+                obscureText: false,
+                keyboardType: TextInputType.number,
+                pinTheme: PinTheme(
+                  shape: PinCodeFieldShape.box,
+                  borderRadius: BorderRadius.circular(5),
+                  borderWidth: 1,
+                  fieldHeight: 50,
+                  fieldWidth: 50,
+                  activeFillColor: Colors.white,
+                  inactiveFillColor: Colors.white,
+                  selectedFillColor: Colors.blue.shade200,
+                  activeColor: Colors.black, // color when the field is active
+                  // selectedColor:
+                  //     Colors.black, // color when the field is selected
+                  inactiveColor: Colors.black,
+                ),
+                animationDuration: Duration(milliseconds: 300),
+                enableActiveFill: true,
+                onCompleted: (v) {
+                  print("Completed");
+                },
+              ),
+              const SizedBox(
+                height: 32.0,
+              ),
+              const SizedBox(),
+            ],
           ),
-          style: TextStyle(
-            fontFamily: 'Roboto',
-            fontStyle: FontStyle.normal,
-            fontWeight: FontWeight.w400,
-            fontSize: 22,
-            letterSpacing: 30.0,
-            color: Colors.black,
-          ),
-        ),
-        SizedBox(height: 30),
-      ],
     );
+  }
   }
 
   Widget _buildContinueButton() {
@@ -287,4 +282,3 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-}
