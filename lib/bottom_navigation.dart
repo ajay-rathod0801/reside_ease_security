@@ -63,24 +63,26 @@ class BottomNavigation extends StatelessWidget {
     return NavigationBar(
       destinations: const <Widget>[
         NavigationDestination(
-          selectedIcon: Icon(Icons.home_outlined),
-          icon: Icon(Icons.home),
+          selectedIcon: Icon(Icons.home, color: Colors.white),
+          icon: Icon(Icons.home_outlined),
           label: 'Home',
         ),
         NavigationDestination(
-          selectedIcon: Icon(Icons.flaky),
-          icon: Badge(child: Icon(Icons.flaky_outlined)),
+          selectedIcon: Icon(Icons.flaky, color: Colors.white),
+          icon: Badge(
+            child: Icon(Icons.flaky),
+          ),
           label: 'In-Out',
         ),
         NavigationDestination(
-          selectedIcon: Icon(Icons.person_2_outlined),
-          icon: Icon(Icons.person_2),
+          selectedIcon: Icon(Icons.account_circle_rounded, color: Colors.white),
+          icon: Icon(Icons.account_circle_rounded),
           label: 'Profile',
         ),
       ],
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromRGBO(255, 237, 173, 1),
       onDestinationSelected: onIndexSelected,
-      indicatorColor: Colors.amberAccent.shade100,
+      indicatorColor: Colors.black,
       selectedIndex: selectedIndex,
     );
   }

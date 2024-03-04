@@ -3,34 +3,33 @@ import 'package:flutter/material.dart';
 class HomePage extends StatelessWidget {
   final TextEditingController _textController = TextEditingController();
 
-  void _updateTextField(String text) {
-    if (_textController.text.length < 6) {
-      _textController.text += text;
-    }
-  }
+  // void _updateTextField(String text) {
+  //   if (_textController.text.length < 6) {
+  //     _textController.text += text;
+  //   }
+  // }
 
-  void _removeLastCharacter() {
-    String currentText = _textController.text;
-    if (currentText.isNotEmpty) {
-      _textController.text = currentText.substring(0, currentText.length - 1);
-    }
-  }
+  // void _removeLastCharacter() {
+  //   String currentText = _textController.text;
+  //   if (currentText.isNotEmpty) {
+  //     _textController.text = currentText.substring(0, currentText.length - 1);
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Container(
-            color: Color(0xFFF9F9FF),
-            padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Align(
                   alignment: Alignment.center,
                   child: Padding(
-                    padding: EdgeInsets.only(top: 50),
+                    padding: EdgeInsets.only(top: 20),
                     child: _buildAddressContainer(),
                   ),
                 ),
@@ -52,7 +51,7 @@ class HomePage extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Padding(
                     padding: EdgeInsets.only(top: 20),
-                    child: _buildTitle('Enter 6 digit code in QR', 22),
+                    child: _buildTitle('Enter 6 digit code in QR', 20),
                   ),
                 ),
                 Align(
@@ -111,7 +110,7 @@ class HomePage extends StatelessWidget {
       style: TextStyle(
         fontFamily: 'Roboto',
         fontStyle: FontStyle.normal,
-        fontWeight: FontWeight.w400,
+        fontWeight: FontWeight.w600,
         fontSize: fontSize,
         color: Color(0xFF000000),
       ),
@@ -150,7 +149,7 @@ class HomePage extends StatelessWidget {
         child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
-            primary: Color(0xFF000000),
+            backgroundColor: Color(0xFF000000),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
@@ -217,13 +216,13 @@ class HomePage extends StatelessWidget {
   Widget _buildContinueButton() {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: Colors.white,
-        onPrimary: Colors.black,
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
           side: BorderSide(
             color: Colors.black,
-            width: 2,
+            width: 1,
           ),
         ),
       ),
@@ -247,10 +246,10 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _buildQRButton() {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        primary: Colors.black,
-        onPrimary: Colors.white,
+    return OutlinedButton(
+      style: OutlinedButton.styleFrom(
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.black,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
           side: BorderSide(

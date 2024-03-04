@@ -37,9 +37,8 @@ class LoginDetailsState extends State<LoginDetails> {
               decoration: InputDecoration(
                 labelText: 'First Name',
                 filled: true,
-                fillColor: Colors.yellow.shade200,
+                fillColor: Color.fromRGBO(255, 237, 173, 1),
               ),
-              cursorColor: Colors.black,
             ),
             const SizedBox(
               height: 20,
@@ -48,9 +47,8 @@ class LoginDetailsState extends State<LoginDetails> {
               decoration: InputDecoration(
                 labelText: 'Last Name',
                 filled: true,
-                fillColor: Colors.yellow.shade200,
+                fillColor: Color.fromRGBO(255, 237, 173, 1),
               ),
-              cursorColor: Colors.black,
             ),
             const SizedBox(
               height: 20,
