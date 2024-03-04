@@ -13,9 +13,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.yellow,
+        colorSchemeSeed:Colors.yellow,
       ),
-      home: ParentWidget(),
+      home: IntroductoryScreen(),
     );
   }
 }
