@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reside_ease_security/loginScreen.dart';
+import 'package:reside_ease_security/screens/login.dart';
 
 class IntroductoryScreen extends StatefulWidget {
   const IntroductoryScreen({super.key});
@@ -20,10 +20,10 @@ class IntroductoryScreenState extends State<IntroductoryScreen> {
           children: [
             Image.asset(
               'assets/logo.png',
-              height: 600,
+              height: 350,
               width: double.infinity,
             ),
-            const SizedBox(
+            SizedBox(
               height: 50,
             ),
             ElevatedButton.icon(
@@ -50,15 +50,6 @@ class IntroductoryScreenState extends State<IntroductoryScreen> {
                   ),
                 );
               },
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                side: const BorderSide(
-                  color: Colors.amberAccent,
-                  width: 1,
-                ),
-              ),
             ),
           ],
         ),

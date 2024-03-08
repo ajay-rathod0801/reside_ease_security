@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:reside_ease_security/loginDetails.dart';
+import 'package:reside_ease_security/screens/login_details.dart';
 
 class OtpScreen extends StatefulWidget {
   final String phoneNumber;
@@ -89,9 +89,12 @@ class OtpScreenState extends State<OtpScreen> {
                   fieldWidth: 50,
                   activeFillColor: Colors.white,
                   inactiveFillColor: Colors.white,
-                  selectedFillColor: Colors.yellow.shade200,
+                  selectedFillColor:
+                      Theme.of(context).colorScheme.primaryContainer,
+                  selectedColor: Theme.of(context).colorScheme.secondary,
                   activeColor: Colors.black, // color when the field is active
-                  selectedColor: Colors.amber,
+                  // selectedColor:
+                  //     Colors.black, // color when the field is selected
                   inactiveColor: Colors.black,
                 ),
                 animationDuration: Duration(milliseconds: 300),
@@ -112,33 +115,20 @@ class OtpScreenState extends State<OtpScreen> {
                 height: 32.0,
               ),
               const SizedBox(),
-              OutlinedButton(
+              ElevatedButton(
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    // navigate to the home screen
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const LoginDetails(),
-                      ),
-                    );
-                  }
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginDetails(),
+                    ),
+                  );
                 },
-                style: OutlinedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  side: const BorderSide(
-                    color: Colors.black,
-                    width: 1,
-                  ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor:
+                      Theme.of(context).colorScheme.primaryContainer,
                 ),
-                child: const Text(
-                  'Continue',
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
-                ),
+                child: Text('Continue'),
               ),
             ],
           ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:reside_ease_security/homeScreen.dart';
-import 'package:reside_ease_security/inout_page.dart';
-import 'package:reside_ease_security/profile_page.dart';
+import 'package:reside_ease_security/screens/home.dart';
+import 'package:reside_ease_security/screens/in_out.dart';
+import 'package:reside_ease_security/screens/profile.dart';
 
 class ParentWidget extends StatefulWidget {
   const ParentWidget({super.key});
@@ -80,7 +80,7 @@ class BottomNavigation extends StatelessWidget {
           label: 'Profile',
         ),
       ],
-      backgroundColor: Color.fromRGBO(255, 237, 173, 1),
+      backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
       onDestinationSelected: onIndexSelected,
       indicatorColor: Colors.black,
       selectedIndex: selectedIndex,
