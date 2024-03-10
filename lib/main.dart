@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/introductory.dart'; // Import your IntroductoryScreen file
+import 'screens/introductory.dart';
 
 void main() {
   runApp(const MyApp());

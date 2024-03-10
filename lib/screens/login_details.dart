@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:reside_ease_security/widgets/bottom_navigation.dart';
+import 'package:reside_ease_security/widgets/user_image_picker.dart';
 
 class LoginDetails extends StatefulWidget {
   const LoginDetails({super.key});
@@ -10,7 +13,9 @@ class LoginDetails extends StatefulWidget {
 }
 
 class LoginDetailsState extends State<LoginDetails> {
+  final _form = GlobalKey<FormState>();
   bool isButtonClicked = false;
+  File? _selectedImage;
 
   @override
   Widget build(BuildContext context) {
@@ -40,12 +45,22 @@ class LoginDetailsState extends State<LoginDetails> {
                             height: 16,
                           ),
                           Form(
-                            child: TextFormField(
-                              keyboardType: TextInputType.name,
-                              textCapitalization: TextCapitalization.words,
-                              decoration: InputDecoration(
-                                labelText: 'First Name',
-                              ),
+                            key: _form,
+                            child: Column(
+                              children: [
+                                UserImagePicker(
+                                  onPickImage: (pickedImage) {
+                                    _selectedImage = pickedImage;
+                                  },
+                                ),
+                                TextFormField(
+                                  keyboardType: TextInputType.name,
+                                  textCapitalization: TextCapitalization.words,
+                                  decoration: InputDecoration(
+                                    labelText: 'First Name',
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           const SizedBox(
