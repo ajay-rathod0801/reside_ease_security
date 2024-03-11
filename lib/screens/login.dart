@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
@@ -100,10 +101,21 @@ class LoginScreenState extends State<LoginScreen> {
                               }
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) => OtpScreen(
-                                    phoneNumber: _phonenoController.text,
-                                  ),
+                                PageRouteBuilder(
+                                  pageBuilder: (context, animation,
+                                          secondaryAnimation) =>
+                                      OtpScreen(
+                                          phoneNumber: _phonenoController.text),
+                                  transitionsBuilder: (context, animation,
+                                      secondaryAnimation, child) {
+                                    return SharedAxisTransition(
+                                      animation: animation,
+                                      secondaryAnimation: secondaryAnimation,
+                                      transitionType:
+                                          SharedAxisTransitionType.horizontal,
+                                      child: child,
+                                    );
+                                  },
                                 ),
                               );
                             },

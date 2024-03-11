@@ -1,7 +1,8 @@
 import 'dart:io';
 
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:reside_ease_security/widgets/bottom_navigation.dart';
 import 'package:reside_ease_security/widgets/user_image_picker.dart';
 
@@ -80,8 +81,17 @@ class LoginDetailsState extends State<LoginDetails> {
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) => ParentWidget(),
+                                PageRouteBuilder(
+                                  pageBuilder: (context, animation,
+                                          secondaryAnimation) =>
+                                      const ParentWidget(),
+                                  transitionsBuilder: (context, animation,
+                                      secondaryAnimation, child) {
+                                    return FadeTransition(
+                                      opacity: animation,
+                                      child: child,
+                                    );
+                                  },
                                 ),
                               );
                             },

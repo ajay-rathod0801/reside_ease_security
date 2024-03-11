@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class EntryForm extends StatefulWidget {
-  const EntryForm({super.key});
+class GuestForm extends StatefulWidget {
+  const GuestForm({super.key});
 
   @override
-  EntryFormState createState() => EntryFormState();
+  GuestFormState createState() => GuestFormState();
 }
 
-class EntryFormState extends State<EntryForm> {
+class GuestFormState extends State<GuestForm> {
   final _form = GlobalKey<FormState>();
   DateTime? _entryDate;
   DateTime? _exitDate;

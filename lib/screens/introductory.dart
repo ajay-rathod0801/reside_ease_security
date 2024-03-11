@@ -1,4 +1,6 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+
 import 'package:reside_ease_security/screens/login.dart';
 
 class IntroductoryScreen extends StatefulWidget {
@@ -45,8 +47,18 @@ class IntroductoryScreenState extends State<IntroductoryScreen> {
                 });
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => const LoginScreen(),
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        const LoginScreen(),
+                    transitionsBuilder:
+                        (context, animation, secondaryAnimation, child) {
+                      return SharedAxisTransition(
+                        animation: animation,
+                        secondaryAnimation: secondaryAnimation,
+                        transitionType: SharedAxisTransitionType.vertical,
+                        child: child,
+                      );
+                    },
                   ),
                 );
               },

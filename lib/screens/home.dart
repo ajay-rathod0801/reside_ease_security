@@ -1,8 +1,10 @@
-import 'package:flutter/cupertino.dart';
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+
+import 'package:reside_ease_security/screens/delivery_form.dart';
 import 'package:reside_ease_security/screens/guest_form.dart';
+import 'package:reside_ease_security/screens/service_form.dart';
 import 'package:reside_ease_security/widgets/card_entry.dart';
 
 class HomePage extends StatelessWidget {
@@ -34,10 +36,21 @@ class HomePage extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => EntryForm(),
+                          Navigator.of(context).push(
+                            PageRouteBuilder(
+                              pageBuilder:
+                                  (context, animation, secondaryAnimation) =>
+                                      GuestForm(),
+                              transitionsBuilder: (context, animation,
+                                  secondaryAnimation, child) {
+                                return SharedAxisTransition(
+                                  child: child,
+                                  animation: animation,
+                                  secondaryAnimation: secondaryAnimation,
+                                  transitionType:
+                                      SharedAxisTransitionType.horizontal,
+                                );
+                              },
                             ),
                           );
                         },
@@ -45,10 +58,53 @@ class HomePage extends StatelessWidget {
                             title: 'Guest', image: 'assets/guest.png'),
                       ),
                       const SizedBox(width: 10),
-                      EntryCard(
-                          title: 'Delivery', image: 'assets/delivery.png'),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            PageRouteBuilder(
+                              pageBuilder:
+                                  (context, animation, secondaryAnimation) =>
+                                      DeliveryForm(),
+                              transitionsBuilder: (context, animation,
+                                  secondaryAnimation, child) {
+                                return SharedAxisTransition(
+                                  child: child,
+                                  animation: animation,
+                                  secondaryAnimation: secondaryAnimation,
+                                  transitionType:
+                                      SharedAxisTransitionType.horizontal,
+                                );
+                              },
+                            ),
+                          );
+                        },
+                        child: EntryCard(
+                            title: 'Delivery', image: 'assets/delivery.png'),
+                      ),
                       const SizedBox(width: 10),
-                      EntryCard(title: 'Service', image: 'assets/service.png'),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            PageRouteBuilder(
+                              pageBuilder:
+                                  (context, animation, secondaryAnimation) =>
+                                      ServiceForm(),
+                              transitionsBuilder: (context, animation,
+                                  secondaryAnimation, child) {
+                                return SharedAxisTransition(
+                                  child: child,
+                                  animation: animation,
+                                  secondaryAnimation: secondaryAnimation,
+                                  transitionType:
+                                      SharedAxisTransitionType.horizontal,
+                                );
+                              },
+                            ),
+                          );
+                        },
+                        child: EntryCard(
+                            title: 'Service', image: 'assets/service.png'),
+                      ),
                     ],
                   ),
                 ),
