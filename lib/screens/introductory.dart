@@ -29,10 +29,10 @@ class IntroductoryScreenState extends State<IntroductoryScreen> {
               height: 50,
             ),
             ElevatedButton.icon(
-              icon: const Icon(
+              icon: Icon(
                 Icons.arrow_forward,
                 size: 20,
-                color: Colors.amberAccent,
+                color: Theme.of(context).colorScheme.primary,
               ),
               label: const Text(
                 'Get Started',
